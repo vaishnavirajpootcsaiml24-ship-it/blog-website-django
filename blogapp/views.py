@@ -20,10 +20,10 @@ def home(request):
 @login_required
 def signup(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)  
+        form = UserRegisterForm(request.POST)   # ✅ FIX 1
         if form.is_valid():
             form.save()
-            username = form.cleaned_data['username']   
+            username = form.cleaned_data['username']   # ✅ FIX 2
             messages.success(request, f'Account Created for {username}! You can now log in')
             return redirect('login')
     else:
